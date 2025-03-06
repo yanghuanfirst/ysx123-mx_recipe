@@ -74,7 +74,7 @@ class RecipeController extends BaseController
         if (parent::beforeAction($action)) {
             $userInfo = $this->getLoginUser();
             if (empty($userInfo) && in_array($action->id, $this->requireLoginActions)) {
-                Util::jsonReturn(ResponseCode::LOGIN_REQUIRED,'no login');
+                echo Util::jsonReturn(ResponseCode::LOGIN_REQUIRED,'no login');
                 Yii::$app->end();
                 return false;
                 //throw new UserException('登录状态失效base', ResponseCode::LOGIN_REQUIRED);
