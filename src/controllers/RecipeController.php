@@ -69,6 +69,17 @@ class RecipeController extends BaseController
         ]
     ];
 
+    function beforeAction($action)
+    {
+        if (parent::beforeAction($action)) {
+            $userInfo = $this->getLoginUser();
+            if (empty($userInfo) && in_array($action->id, $this->requireLoginActions)) {
+                return Util::jsonReturn(ResponseCode::LOGIN_REQUIRED,'no login');
+                //throw new UserException('登录状态失效base', ResponseCode::LOGIN_REQUIRED);
+            }
+            return true;
+        }
+    }
     /**
      * @desc actionRecipeType 菜谱类型
      * @create_at 2025/2/26 11:06
