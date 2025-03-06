@@ -80,7 +80,7 @@ class RecipeController extends BaseController
 //                    'code' => ResponseCode::LOGIN_REQUIRED,
 //                    'message' => 'no login'
 //                ];
-                Yii::$app->end();
+                //Yii::$app->end();
                 return false;
                 //throw new UserException('登录状态失效base', ResponseCode::LOGIN_REQUIRED);
             }
