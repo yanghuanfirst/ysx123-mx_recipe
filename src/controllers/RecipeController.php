@@ -74,13 +74,12 @@ class RecipeController extends BaseController
         if (parent::beforeAction($action)) {
             $userInfo = $this->getLoginUser();
             if (empty($userInfo) && in_array($action->id, $this->requireLoginActions)) {
-                return json_encode(Util::jsonReturn(ResponseCode::LOGIN_REQUIRED,'no login'));
+                echo json_encode(Util::jsonReturn(ResponseCode::LOGIN_REQUIRED,'no login'));exit();
 //                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 //                Yii::$app->response->data = [
 //                    'code' => ResponseCode::LOGIN_REQUIRED,
 //                    'message' => 'no login'
 //                ];
-                Yii::$app->end();
                 return false;
                 //throw new UserException('登录状态失效base', ResponseCode::LOGIN_REQUIRED);
             }
