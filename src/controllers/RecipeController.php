@@ -71,12 +71,11 @@ class RecipeController extends BaseController
 
     function beforeAction($action)
     {
-        echo 0;
         if (parent::beforeAction($action)) {
             $userInfo = $this->getLoginUser();
-            echo 11;
             if (empty($userInfo) && in_array($action->id, $this->requireLoginActions)) {
-                return Util::jsonReturn(ResponseCode::LOGIN_REQUIRED,'no login');
+                //return Util::jsonReturn(ResponseCode::LOGIN_REQUIRED,'no login');
+                return false;
                 //throw new UserException('登录状态失效base', ResponseCode::LOGIN_REQUIRED);
             }
             return true;
