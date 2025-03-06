@@ -71,6 +71,7 @@ class RecipeController extends BaseController
 
     function beforeAction($action)
     {
+        echo 0;
         if (parent::beforeAction($action)) {
             $userInfo = $this->getLoginUser();
             echo 11;
